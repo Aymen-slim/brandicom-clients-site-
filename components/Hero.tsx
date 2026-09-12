@@ -76,6 +76,7 @@ function MarqueeCard({ item, index }: { item: VideoItem; index: number }) {
         alt={item.alt}
         videoId={videoId}
         deferMs={(index % 4) * 300}
+        eager={index < 6}
       />
     </div>
   );
@@ -185,6 +186,7 @@ export default function Hero() {
                     alt={PHONE_VIDEO.alt}
                     videoId="hero-phone"
                     fill
+                    eager
                   />
                   {/* Instagram-style overlay: action rail + view count */}
                   <div className="phone-ig-rail" aria-hidden="false">

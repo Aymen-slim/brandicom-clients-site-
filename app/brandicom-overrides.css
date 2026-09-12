@@ -290,17 +290,21 @@ body {
 .hero_navbar-wrap .container {
   pointer-events: auto;
 }
+/* Glassy pill nav: translucent so the hero glow tints it, blue-tinted
+   edge + soft brand shadow to match the site palette. */
 .navbar {
   transition: background-color .3s ease, box-shadow .3s ease;
-  background-color: #ffffff !important;
-  border: 1px solid #ebf3ff;
-  box-shadow: 0 10px 30px -18px #0f172a22;
+  background-color: #ffffffc2 !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  backdrop-filter: blur(16px) saturate(1.5);
+  border: 1px solid #d6e6ff;
+  box-shadow: 0 14px 40px -18px #0066ff45;
   opacity: 1 !important;
   visibility: visible !important;
 }
 .navbar.is-scrolled {
-  background-color: #fffffff2 !important;
-  box-shadow: 0 10px 30px -18px #0f172a33;
+  background-color: #fffffff0 !important;
+  box-shadow: 0 12px 34px -18px #0f172a33;
   border-radius: 18px;
 }
 .nav_barnd-text {
@@ -575,10 +579,12 @@ img, video {
   filter: none;
   animation-duration: 7s;
 }
+/* Phone mockup: static brand-blue ambient shadow (cheap — no animated
+   filter) so the frame ties into the site palette. */
 .banner-mobile-in {
   filter: none;
-  box-shadow: none;
-  border-radius: 24px;
+  border-radius: 46px;
+  box-shadow: 0 44px 90px -34px #0066ff59, 0 0 0 1px #dbeafe;
 }
 .services_text-dot-wrap, .brand_text-dot-wrap, .award_text-dot-wrap {
   -webkit-backdrop-filter: none;
@@ -615,8 +621,15 @@ img, video {
 .section-hero {
   position: relative;
 }
+/* Blue glow bleeds to the very top of the screen — behind and above the
+   floating nav — instead of starting below it. */
 .section-hero .shape {
-  top: -60px;
+  top: -150px;
+}
+@media screen and (max-width: 767px) {
+  .section-hero .shape {
+    top: -110px;
+  }
 }
 
 /* Reference-home alignment: keep the compact monogram used in the supplied
@@ -689,7 +702,7 @@ img, video {
     overflow: clip;
   }
   .banner-mobile {
-    max-width: 150px;
+    max-width: min(58vw, 212px);
   }
   .banner-background-video {
     border-radius: 26px;
@@ -698,7 +711,7 @@ img, video {
     padding: 7px;
   }
   .hero_main_circle_box {
-    min-height: 340px;
+    min-height: 460px;
     margin-top: 8px;
     width: 100%;
   }
@@ -731,7 +744,7 @@ img, video {
 }
 .phone-ig-rail {
   position: absolute;
-  right: 8px;
+  right: 10px;
   top: 50%;
   bottom: auto;
   transform: translateY(-50%);
@@ -739,7 +752,7 @@ img, video {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   pointer-events: none;
 }
 .phone-ig-btn {
@@ -795,8 +808,8 @@ button.phone-ig-btn {
 /* Small phone on mobile: shrink the overlay so it stays inside the screen. */
 @media screen and (max-width: 767px) {
   .phone-ig-rail {
-    right: 6px;
-    gap: 8px;
+    right: 7px;
+    gap: 11px;
   }
   .phone-ig-btn {
     font-size: 8px;
@@ -827,6 +840,12 @@ button.phone-ig-btn {
 /* 20. Video ribbon never stops — reels autoplay and keep moving on hover. */
 .hero-video-marquee-track:hover {
   animation-play-state: running;
+}
+
+/* Soft light frame under every reel so the page never flashes dark or
+   empty while the first frame loads — reads as a clean white card. */
+.bgv-root {
+  background: linear-gradient(160deg, #ffffff 0%, #eef4ff 100%);
 }
 
 /* 21. Case studies: real responsive grid. Was a flex-column chain of

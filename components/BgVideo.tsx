@@ -9,6 +9,11 @@ interface BgVideoProps {
   videoId: string;
   /** Stagger initial fetches so 18 marquee clips don't hit the CDN at once. */
   deferMs?: number;
+  /**
+   * Attach src + start playing on mount instead of waiting for the
+   * IntersectionObserver — for above-the-fold clips that must load first.
+   */
+  eager?: boolean;
   className?: string;
   /**
    * Fill the parent box edge-to-edge instead of forcing a 16/10 strip.
@@ -31,6 +36,7 @@ export default function BgVideo({
   alt,
   videoId,
   deferMs = 0,
+  eager = false,
   className,
   fill = false,
 }: BgVideoProps) {
@@ -44,7 +50,7 @@ export default function BgVideo({
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let delayTimer: ReturnType<typeof setTimeout> | undefined;
-    let visible = false;
+    let visible = eager;
     let loaded = false;
 
     const ensureSrc = () => {
@@ -59,6 +65,9 @@ export default function BgVideo({
       ensureSrc();
       v.play().catch(() => {});
     };
+
+    // Eager clips start fetching/playing immediately — first thing on the page.
+    if (eager) tryPlay();
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -90,7 +99,7 @@ export default function BgVideo({
       io.disconnect();
       document.removeEventListener("visibilitychange", onVis);
     };
-  }, [mp4, deferMs]);
+  }, [mp4, deferMs, eager]);
 
   return (
     <div ref={wrapRef} className="bgv-root" style={{ width: "100%", height: "100%", ...(fill ? {} : { aspectRatio: "16 / 10" }) }}>
