@@ -1,0 +1,879 @@
+/* Brandicom — requested palette:
+   Primary #0066FF / Hover #0047BA / Tint #EBF3FF /
+   BG #FFFFFF / Section #F8FAFC / Ink #0F172A / Muted #64748B */
+
+:root {
+  --brand: #0066ff;
+  --brand-600: #0066ff;
+  --brand-deep: #0047ba;
+  --brand-darker: #003a8c;
+  --brand-ink: #0f172a;
+  --brand-tint: #ebf3ff;
+  --brand-wash: #f8fafc;
+  --brand-bg: #ffffff;
+  --brand-muted: #64748b;
+}
+
+/* 1. Font fix: broken "Open Sauce One" @font-face (zip/rar, format undefined)
+   falls back to Arial. Prefer loaded Next fonts. */
+:root {
+  --_base---font-family--your-title-font: var(--font-inter), "DM Sans", Arial, sans-serif;
+}
+body {
+  font-family: var(--font-inter), var(--font-manrope), Arial, sans-serif;
+  background-color: var(--brand-bg);
+  color: var(--brand-ink);
+  overflow-x: clip;
+}
+h1, h2, h3, .style-h1, .style-h2, .style-h3,
+.nav_barnd-text, .footer_barnd-text {
+  font-family: var(--font-inter), "DM Sans", Arial, sans-serif;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+/* 2. Accent surfaces -> brand blues (match the header CTA, no near-black) */
+.section_brand {
+  background-color: #0066ff;
+}
+.curve_svg path,
+.curve_svg.two path {
+  fill: #0066ff;
+}
+.pricing_right-wrap {
+  background-color: #0047ba;
+  background-image: linear-gradient(160deg, #4d94ff 0%, #0066ff 45%, #0047ba 100%);
+  border: 1px solid #ffffff2e;
+  box-shadow: 0 24px 60px -20px #0066ff66;
+}
+/* Footer: left card = brand blue gradient, right panel = deep navy.
+   White text everywhere for contrast (was black-on-blue slab). */
+.footer_left-wrap {
+  background: linear-gradient(160deg, #4d94ff 0%, #0066ff 55%, #0047ba 100%);
+  border: 1px solid #ffffff33;
+}
+.footer_left-wrap .footer_barnd-text,
+.footer_left-wrap .text-size-medium,
+.footer_left-wrap .text-colr-black {
+  color: #ffffff !important;
+}
+.footer_left-wrap .text-color-light-dark {
+  color: #ffffffcc !important;
+}
+.footer_social-link {
+  transition: background-color 0.3s ease;
+}
+.footer_social-link:hover {
+  background-color: #ebf3ff;
+}
+.footer_right-wrap {
+  background: linear-gradient(160deg, #003a8c 0%, #001c42 100%);
+  border: 1px solid #ffffff1f;
+}
+.footer_right-wrap .text-size-medium {
+  color: #ffffff !important;
+}
+.footer_right-wrap .footer_text-link,
+.footer_right-wrap .footer_icon-text-wrap,
+.footer_right-wrap .footer_icon-text-wrap .text-small.text-color-dark {
+  color: #ffffffb3 !important;
+}
+.footer_right-wrap .footer_text-link:hover,
+.footer_right-wrap .footer_text-link.w--current,
+.footer_right-wrap .footer_icon-text-wrap:hover,
+.footer_right-wrap .footer_icon-text-wrap:hover .text-small.text-color-dark {
+  color: #ffffff !important;
+}
+.section_award {
+  background: linear-gradient(180deg, #0066ff, #0047ba);
+}
+/* Light sections -> snow white; cards -> ice wash */
+.section_services, .section_logo, .section_team, .section_testimonials, .section_faq {
+  background-color: #ffffff;
+}
+.services_card, .pricing_card, .faq_card, .testimonials_btm-card {
+  background-color: #fff;
+  border-color: #ebf3ff;
+}
+.logo_inner_box, .services_text-dot-wrap, .brand_text-dot-wrap, .award_text-dot-wrap {
+  background-color: #ebf3ff;
+}
+h1, h2, h3, .style-h1, .style-h2, .style-h3, .nav_barnd-text, .footer_barnd-text {
+  color: #0f172a;
+}
+.text-medium, .text-size-regular, .text-small, p {
+  color: #0f172a;
+}
+.text-size-regular.text-color-dark, .text-size-regular.text-color-dark-grey,
+.text-medium.text-color-dark, .text-color-light-dark {
+  color: #64748b !important;
+}
+
+/* 3. Buttons / accents -> #0066FF, hover #0047BA */
+.hero_secondary-button:where(.w-variant-5d42a8e4-7468-2db5-2e7a-c9038385df4e),
+.pricing_card-button:where(.w-variant-6cbbbae5-1190-aa88-bada-8cf198d4a490) {
+  background-color: #0066ff;
+}
+.hero_secondary-button:where(.w-variant-5d42a8e4-7468-2db5-2e7a-c9038385df4e):hover,
+.pricing_card-button:where(.w-variant-6cbbbae5-1190-aa88-bada-8cf198d4a490):hover {
+  background-color: #0047ba;
+}
+.hero_primary-button .primary-btn-bg,
+.hero_secondary-button .primary-btn-bg {
+  background-color: #0066ff;
+}
+.hero_primary-button:hover .primary-btn-bg,
+.hero_secondary-button:hover .primary-btn-bg {
+  background-color: #0047ba;
+}
+.hero_secondary-button:not(:where(.w-variant-5d42a8e4-7468-2db5-2e7a-c9038385df4e)) {
+  background-color: #fff;
+  border: 1.5px solid #0066ff;
+  color: #0f172a;
+}
+.services_dot-wrap, .award_dot-wrap {
+  background-color: #0066ff;
+}
+.brand_dot-wrap {
+  background-color: #fff;
+}
+::selection {
+  background: #0066ff;
+  color: #fff;
+}
+:focus-visible {
+  outline: 3px solid #0066ff99;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* 4. Logo blockiness fix: blue square on light bg */
+.nav_brand_image_wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  box-shadow: 0 6px 18px -6px #0066ff80;
+}
+.nav_logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.footer_brand_image_wrap {
+  border-radius: 16px;
+}
+
+/* 5. Marquee structural + timing fixes (seamless -50% loops).
+   Tracks use gap:0 + child margins so the -50% keyframe lands exactly. */
+.logo_inner-wrap.marquee-track-left {
+  gap: 0;
+  animation-duration: 28s;
+}
+.logo_images-wrap {
+  gap: 48px;
+  padding-right: 48px;
+}
+.brand_video_wrap_box.marquee-track-left {
+  gap: 0;
+  animation-duration: 32s;
+}
+.brand_btm-video-wrap {
+  gap: 16px;
+  padding-right: 16px;
+}
+.home_image_box.hero-video-marquee-track {
+  gap: 0;
+  animation-duration: 40s;
+}
+.home_image_box.hero-video-marquee-track .home_image {
+  margin-right: 16px;
+}
+.testimonials_btm_card_wrap.marquee-track-left {
+  width: max-content;
+  gap: 0 !important;
+  animation-duration: 48s;
+}
+.testimonials_btm_card_wrap.marquee-track-left .testimonials_card-inner-wrap {
+  margin-right: 24px;
+}
+/* edge fades so ribbons don't clip harshly (static, no per-frame mask on track) */
+.logo_inner_box, .brand_video_wrap {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.testimonials_right-absloute-wrap, .testimonials_left-absloute-wrap {
+  display: none;
+}
+
+/* 6. Card polish + hover lift (missing micro-animation) */
+.pricing_card, .pricing_right-wrap {
+  transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s;
+}
+.pricing_card:hover, .pricing_right-wrap:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -20px #0f172a40;
+}
+.studies_collection-link {
+  text-decoration: none;
+}
+.studies_collection-image-wrap {
+  overflow: hidden;
+  border-radius: 18px;
+}
+/* shine sweep on service + study cards */
+.services_card::after, .studies_collection-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, #ffffff2e 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform .8s ease;
+  pointer-events: none;
+}
+.services_card:hover::after, .studies_collection-item:hover::after {
+  transform: translateX(120%);
+}
+
+/* 7. Fail-open entrance animation: content visible by default.
+   IO adds .is-in; if JS/IO fails nothing stays at opacity 0. */
+[slide-up] {
+  opacity: 1;
+  translate: 0 0;
+}
+.js-anim [slide-up]:not(.is-in) {
+  opacity: 0;
+  translate: 0 24px;
+}
+.js-anim [slide-up].is-in {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity .7s cubic-bezier(.16,1,.3,1), translate .7s cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js-anim [slide-up]:not(.is-in) {
+    opacity: 1;
+    translate: none;
+  }
+  .js-anim [slide-up].is-in {
+    transition: none;
+  }
+}
+
+/* 8. CTA glow pulse (was static black) */
+.brand_button-wrap .hero_secondary-button {
+  box-shadow: 0 0 0 0 #ffffff55;
+  animation: cta-glow 2.6s ease-in-out infinite;
+}
+@keyframes cta-glow {
+  0%, 100% { box-shadow: 0 0 0 0 #ffffff44; }
+  50% { box-shadow: 0 0 0 14px #ffffff00; }
+}
+
+/* 9. Navbar: fixed global bar, always visible, palette-matched */
+body {
+  padding-top: 86px;
+}
+.hero_navbar-wrap {
+  position: fixed;
+  top: 12px;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: none;
+}
+.hero_navbar-wrap .max-with-medium,
+.hero_navbar-wrap .container {
+  pointer-events: auto;
+}
+.navbar {
+  transition: background-color .3s ease, box-shadow .3s ease;
+  background-color: #ffffff !important;
+  border: 1px solid #ebf3ff;
+  box-shadow: 0 10px 30px -18px #0f172a22;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.navbar.is-scrolled {
+  background-color: #fffffff2 !important;
+  box-shadow: 0 10px 30px -18px #0f172a33;
+  border-radius: 18px;
+}
+.nav_barnd-text {
+  color: #0f172a !important;
+}
+/* Readable ink on white bar — covers Webflow base white text */
+.nav_link,
+.nav_link .nav_text,
+.nav_text,
+.nav-manue .nav_text {
+  color: #0f172a !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.nav_link:hover,
+.nav_link:hover .nav_text {
+  color: #0066ff !important;
+}
+.nav_menu-button,
+.nav_menu-button.w-nav-button,
+button.nav_menu-button,
+.w-icon-nav-menu {
+  color: #0f172a !important;
+  opacity: 1 !important;
+}
+/* "See Projects" (white pill, blue border): brand blue label — was
+   forced white-on-white and invisible. Blue slide hover -> white. */
+.hero_secondary-button:not(.w-variant-5d42a8e4-7468-2db5-2e7a-c9038385df4e) .secondary-btn-text {
+  color: #0066ff !important;
+  text-shadow: 0 20px 0 #0066ff;
+}
+.hero_secondary-button:not(.w-variant-5d42a8e4-7468-2db5-2e7a-c9038385df4e):hover .secondary-btn-text {
+  color: #ffffff !important;
+  text-shadow: 0 20px 0 #ffffff;
+}
+/* "Book a Call" (blue pill): white label; white slide hover -> blue. */
+.hero_secondary-button.w-variant-5d42a8e4-7468-2db5-2e7a-c9038385df4e .secondary-btn-text {
+  color: #ffffff !important;
+}
+.hero_secondary-button.w-variant-5d42a8e4-7468-2db5-2e7a-c9038385df4e:hover .secondary-btn-text {
+  color: #0066ff !important;
+  text-shadow: 0 20px 0 #0066ff;
+}
+.hero_primary-button .primary-btn-text {
+  color: #ffffff !important;
+}
+/* "Book a Call" inside the blue CTA section: white pill + blue label,
+   deep-navy slide on hover (was blue-on-blue — invisible). */
+.section_brand .hero_secondary-button {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+.section_brand .hero_secondary-button .secondary-btn-text {
+  color: #0066ff !important;
+  text-shadow: 0 20px 0 #0066ff;
+}
+.section_brand .hero_secondary-button:hover .primary-btn-bg {
+  background-color: #003a8c;
+}
+.section_brand .hero_secondary-button:hover .secondary-btn-text {
+  color: #ffffff !important;
+  text-shadow: 0 20px 0 #ffffff;
+}
+/* Desktop: menu always visible. Mobile (<=991px): hidden unless open. */
+.nav-manue.w-nav-menu {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.nav_menu-button.w-nav-button {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+  .nav_menu-button.w-nav-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-manue.w-nav-menu {
+    display: none !important;
+  }
+  .nav-manue.w-nav-menu.w--nav-menu-open {
+    display: block !important;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.97);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid #ebf3ff;
+    border-radius: 16px;
+    box-shadow: 0 24px 50px -20px #0f172a33;
+    padding: 12px;
+    z-index: 1002;
+  }
+  .nav-manue.w-nav-menu.w--nav-menu-open .nav_link,
+  .nav-manue.w-nav-menu.w--nav-menu-open .nav_text {
+    color: #0f172a !important;
+  }
+  .navbar {
+    position: relative;
+  }
+  body {
+    padding-top: 76px;
+  }
+}
+
+/* 10. Scroll progress + back-to-top */
+.brandicom-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #0066ff, #0047ba);
+  z-index: 9999;
+}
+.brandicom-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: #0066ff;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  translate: 0 12px;
+  transition: opacity .3s, translate .3s, transform .3s;
+  z-index: 9998;
+  box-shadow: 0 14px 30px -10px #0066ff99;
+}
+.brandicom-top:hover {
+  background: #0047ba;
+}
+.brandicom-top.show {
+  opacity: 1;
+  translate: 0 0;
+}
+.brandicom-top:hover {
+  transform: translateY(-3px);
+}
+
+/* 11. Responsive / overflow design-error fixes */
+img, video {
+  max-width: 100%;
+}
+.hero_main_circle_box, .banner-marque, .brand_video_wrap {
+  min-width: 0;
+}
+/* Hero composition: phone mockup must center over the video ribbon.
+   .hero_main_circle_box becomes the positioning context; the phone uses
+   the `translate` property so the float keyframes (transform) still work. */
+.hero_main_circle_box {
+  position: relative;
+}
+.banner-marque {
+  display: flex;
+  justify-content: center;
+}
+.banner-mobile {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+/* Team ("Meet the Team") pinned scene: the 2800px card field pans up
+   through a clipped 100vh window. Clip lives on the wrapper. */
+@media screen and (min-width: 992px) {
+  .section_team_wrapper {
+    overflow: hidden;
+  }
+}
+/* <=991px: no pin — static grid so cards can't pile up off-screen. */
+@media screen and (max-width: 991px) {
+  .section_team_height {
+    min-height: auto;
+  }
+  .section_team_sticky {
+    position: static;
+  }
+  .section_team_wrapper {
+    max-height: none;
+  }
+  .team_top-wrap {
+    min-height: auto;
+  }
+  .team_battom-wrap {
+    position: static;
+    height: auto;
+    margin-top: var(--_common-spacing---spacing-x17);
+  }
+  .team_battom-inner-wrap {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+  .team_data-wrap,
+  .team_data-wrap.two,
+  .team_data-wrap.three,
+  .team_data-wrap.four,
+  .team_data-wrap.five,
+  .team_data-wrap.six {
+    position: static;
+    inset: auto;
+    max-width: none;
+    aspect-ratio: 388 / 450;
+    height: auto;
+  }
+}
+/* Frosted card footers: drop per-frame backdrop blur during the pan. */
+.team_bottom_bg {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background-color: #ffffff26;
+}
+.studies_battom-inner-wrap {
+  width: 100%;
+}
+.footer_data-wrap {
+  grid-template-columns: .4fr .767fr;
+}
+@media screen and (max-width: 991px) {
+  .services_battom-wrap, .pricingt_battom-wrap {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer_data-wrap {
+    grid-template-columns: 1fr;
+  }
+  .footer_right-inner-wrap {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .services_battom-wrap, .pricingt_battom-wrap {
+    grid-template-columns: 1fr;
+  }
+  .services_card {
+    max-width: 100%;
+  }
+  .brand_btm-bg-video {
+    width: min(78vw, 357px);
+  }
+  .footer_social-link-wrap {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer_social-link {
+    max-width: none;
+    flex: 1 1 45%;
+  }
+  h1, .style-h1 { font-size: clamp(34px, 9vw, 44px); line-height: 1.08; }
+  h2, .style-h2 { font-size: clamp(28px, 7vw, 36px); line-height: 1.12; }
+}
+
+/* 12. Reduced motion: also kill new animations */
+@media (prefers-reduced-motion: reduce) {
+  .brand_button-wrap .hero_secondary-button,
+  .brandicom-top {
+    animation: none !important;
+  }
+}
+
+/* 13. PERF: kill per-frame GPU killers, defer offscreen rendering */
+.banner-mobile {
+  filter: none;
+  animation-duration: 7s;
+}
+.banner-mobile-in {
+  filter: none;
+  box-shadow: none;
+  border-radius: 24px;
+}
+.services_text-dot-wrap, .brand_text-dot-wrap, .award_text-dot-wrap {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: #ffffffb3;
+}
+/* Marquee tracks: promote once, pause offscreen via JS (animation-play-state) */
+.marquee-track-left, .marquee-track-right, .hero-video-marquee-track {
+  will-change: transform;
+}
+/* NOTE: no content-visibility here — it breaks the pinned 500vh team
+   scrub scene and other ScrollTrigger measurements. */
+.marquee-track-left, .marquee-track-right, .hero-video-marquee-track {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  .home_image_box.hero-video-marquee-track { animation-duration: 55s; }
+  .logo_inner-wrap.marquee-track-left { animation-duration: 36s; }
+  .brand_video_wrap_box.marquee-track-left { animation-duration: 40s; }
+  .testimonials_btm_card_wrap.marquee-track-left { animation-duration: 60s; }
+  .brand_button-wrap .hero_secondary-button { animation: none; }
+}
+
+/* 14. Hero ambient glow (.shape) — sits behind the hero content, top-center.
+   Recolored to brand blue via /hero-glow.svg (was lime Ellipse 11). */
+.section-hero {
+  position: relative;
+}
+.section-hero .shape {
+  top: -60px;
+}
+
+/* Reference-home alignment: keep the compact monogram used in the supplied
+   design and give the service cards their intended light, editorial finish. */
+.nav_brand {
+  max-width: 48px;
+}
+
+.nav_brand.w--current {
+  max-width: 48px;
+}
+
+.nav_brand_image_wrap {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.nav_logo {
+  object-fit: contain;
+  border-radius: 0;
+}
+
+.services_card {
+  border-color: #d9e8ff;
+  background-color: #edf5ff;
+  background-image: linear-gradient(145deg, #f7faff 0%, #dcecff 100%);
+  box-shadow: 0 18px 38px -30px rgba(15, 23, 42, 0.4);
+}
+
+.text-size-xmedium.services_card_title,
+.text-size-small.services_card_text {
+  color: var(--brand-ink);
+}
+
+.services_card-arrow-wrap {
+  background-color: var(--brand);
+  box-shadow: 0 10px 20px -12px rgba(0, 102, 255, 0.9);
+}
+
+.services_card-arrow-image {
+  filter: brightness(0) invert(1);
+}
+
+/* 15. Phone mockup: the reel fills the whole phone screen (9:19) at every
+   breakpoint. .banner-background-video previously only had a min-height,
+   so the BgVideo wrapper (height:100% of an auto-height parent) collapsed
+   to its 16/10 strip and left a big empty gap inside the phone frame. */
+.banner-background-video {
+  aspect-ratio: 9 / 19;
+  height: auto;
+  min-height: 0;
+  overflow: hidden;
+}
+/* Only the BgVideo root fills the screen — must NOT hit .phone-ig-rail /
+   .phone-ig-views, or they stretch full-height and the icons misplace. */
+.banner-background-video > .bgv-root {
+  height: 100%;
+}
+.banner-background-video video {
+  display: block;
+}
+
+/* 16. Mobile hero: full-width stage, big phone, no ribbon control clutter.
+   Blue brand theme (same as desktop) — no cream overrides. */
+@media screen and (max-width: 767px) {
+  .section-hero {
+    overflow: clip;
+  }
+  .banner-mobile {
+    max-width: 150px;
+  }
+  .banner-background-video {
+    border-radius: 26px;
+  }
+  .banner-mobile-in {
+    padding: 7px;
+  }
+  .hero_main_circle_box {
+    min-height: 340px;
+    margin-top: 8px;
+    width: 100%;
+  }
+  .banner-marque {
+    width: 100%;
+  }
+  .hero_button-wrap {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero_secondary-button,
+  .hero_primary-button {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* 18. Smooth video: promote hero clips to their own compositor layers so
+   the ribbon + phone animate without repainting every frame. */
+.banner-background-video video,
+.home_image video {
+  transform: translateZ(0);
+}
+
+/* 19. Instagram-style overlay on the phone mockup: right action rail
+   (like / comment / share) + bottom-left view count. */
+.banner-background-video {
+  position: relative;
+}
+.phone-ig-rail {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+.phone-ig-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 1px 5px #000a;
+  pointer-events: auto;
+}
+button.phone-ig-btn {
+  cursor: pointer;
+}
+.phone-ig-btn svg {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 1px 3px #0009);
+}
+.phone-ig-btn.liked {
+  color: #ff3040;
+}
+.phone-ig-btn.liked svg {
+  filter: drop-shadow(0 1px 6px #ff304066);
+}
+.phone-ig-views {
+  position: absolute;
+  left: 10px;
+  bottom: 12px;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  text-shadow: 0 1px 5px #000a;
+  pointer-events: none;
+}
+.phone-ig-views svg {
+  width: 10px;
+  height: 10px;
+  filter: drop-shadow(0 1px 3px #0009);
+}
+/* Small phone on mobile: shrink the overlay so it stays inside the screen. */
+@media screen and (max-width: 767px) {
+  .phone-ig-rail {
+    right: 6px;
+    gap: 8px;
+  }
+  .phone-ig-btn {
+    font-size: 8px;
+  }
+  .phone-ig-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  .phone-ig-views {
+    left: 8px;
+    bottom: 9px;
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav_brand,
+  .nav_brand.w--current {
+    max-width: 42px;
+  }
+
+  .nav_brand_image_wrap {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* 20. Video ribbon never stops — reels autoplay and keep moving on hover. */
+.hero-video-marquee-track:hover {
+  animation-play-state: running;
+}
+
+/* 21. Case studies: real responsive grid. Was a flex-column chain of
+   per-card lists that collapsed to 0px wide on desktop. */
+.studies_battom-wrap .studies_collection {
+  width: 100%;
+  max-width: none;
+}
+.studies_collection-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+}
+.studies_collection-item {
+  position: relative;
+  width: 100%;
+}
+.studies_collection-link {
+  display: block;
+  height: 100%;
+}
+.studies_collection_wrap {
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.studies_collection-image-wrap {
+  aspect-ratio: 4 / 5;
+  max-width: none;
+  height: 100%;
+}
+/* Tag pill is brand blue — label must be white, not black. */
+.studies_collection-tag-wrap .text-size-regular {
+  color: #ffffff !important;
+}
+.case_studies_descripton {
+  font-size: 15px;
+  line-height: 1.55;
+}
+@media screen and (max-width: 991px) {
+  .studies_collection-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 767px) {
+  .studies_collection-list {
+    grid-template-columns: 1fr;
+  }
+}
