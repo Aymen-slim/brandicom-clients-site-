@@ -1,30 +1,48 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   // Close mobile menu on Escape / route-hash change / resize to desktop.
   useEffect(() => {
     if (!mobileMenuOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileMenuOpen(false);
+      if (e.key === "Escape") {
+        setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
     };
     const onResize = () => {
       if (window.innerWidth > 991) setMobileMenuOpen(false);
     };
+    const onHashChange = () => setMobileMenuOpen(false);
+    const onPointerDown = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setMobileMenuOpen(false);
+    };
+    const onFocusIn = (event: FocusEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setMobileMenuOpen(false);
+    };
     window.addEventListener("keydown", onKey);
     window.addEventListener("resize", onResize);
+    window.addEventListener("hashchange", onHashChange);
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("focusin", onFocusIn);
     return () => {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("hashchange", onHashChange);
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("focusin", onFocusIn);
     };
   }, [mobileMenuOpen]);
 
   return (
-    <div className="hero_navbar-wrap">
+    <div ref={headerRef} className="hero_navbar-wrap">
       <div className="max-with-medium">
         <div className="w-layout-blockcontainer container w-container">
           <div role="banner" className="navbar w-nav">
@@ -40,7 +58,7 @@ export default function Navbar() {
                   <div className="nav_barnd_wrapper">
                     <div className="nav_brand_image_wrap">
                       <img
-                        loading="lazy"
+                        loading="eager"
                         src="/brandicom-mark.png"
                         alt="Brandicom Logo"
                         className="nav_logo"
@@ -53,6 +71,7 @@ export default function Navbar() {
 
                 {/* Desktop / Mobile Navigation */}
                 <nav
+                  id="primary-navigation"
                   role="navigation"
                   aria-label="Primary"
                   className={`nav-manue w-nav-menu ${mobileMenuOpen ? "w--nav-menu-open" : ""}`}
@@ -77,7 +96,7 @@ export default function Navbar() {
                       className="nav_link w-inline-block"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      <div className="nav_text">Blog</div>
+                      <div className="nav_text">Testimonials</div>
                     </Link>
                   </div>
                 </nav>
@@ -87,6 +106,7 @@ export default function Navbar() {
                   <Link
                     href="#contact"
                     className="hero_secondary-button w-variant-5d42a8e4-7468-2db5-2e7a-c9038385df4e w-inline-block"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     <div className="primary-btn-text-wrap">
                       <div className="text-size-small secondary-btn-text">
@@ -99,14 +119,17 @@ export default function Navbar() {
 
                 {/* Mobile Menu Button */}
                 <button
+                  ref={menuButtonRef}
                   type="button"
-                  aria-label="Toggle navigation menu"
+                  aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                   aria-expanded={mobileMenuOpen}
+                  aria-controls="primary-navigation"
                   className={`nav_menu-button w-nav-button ${mobileMenuOpen ? "w--open" : ""}`}
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  style={{ background: "transparent", border: "none", cursor: "pointer" }}
+                  onClick={() => setMobileMenuOpen((open) => !open)}
                 >
-                  <div className="w-icon-nav-menu"></div>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                    <path d={mobileMenuOpen ? "M6 6l12 12M6 18L18 6" : "M4 6h16M4 12h16M4 18h16"} />
+                  </svg>
                 </button>
               </div>
             </div>

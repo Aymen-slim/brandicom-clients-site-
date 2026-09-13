@@ -86,8 +86,8 @@ export default function FAQ() {
                     Have questions?
                   </div>
                   <p className="text-size-small text-color-dark-gray">
-                    Most clients see noticeable growth within the first 30–60
-                    days.
+                    Tell us about your goals. We’ll help you find the right plan
+                    for your brand.
                   </p>
                   <div className="faq_button-wrap">
                     <Link
@@ -105,51 +105,19 @@ export default function FAQ() {
                 {FAQS.map((item, idx) => {
                   const isOpen = openIndex === idx;
                   return (
-                    <div
-                      key={item.id}
-                      slide-up=""
-                      className="faq_out-wrap"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => toggleItem(idx)}
-                    >
-                      <div className="faq_queston-wrap">
-                        <div className="text-size-medium text-colr-black text-weight-medium">
-                          {item.question}
-                        </div>
-                        <div className="faq_queston-icon-wrap">
-                          <img
-                            loading="lazy"
-                            src="https://cdn.prod.website-files.com/69e08be4846b1167331e54ef/69ec6da54fc4a9f13bc3d35b_arrow-up-02%20(1).png"
-                            alt="Toggle"
-                            className="faq_queston-arrow-icon"
-                            style={{
-                              transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                              transition: "transform 0.3s ease",
-                            }}
-                          />
-                          <img
-                            loading="lazy"
-                            src="https://cdn.prod.website-files.com/69e08be4846b1167331e54ef/69ec6e9b8159275d0e093170_multiplication-sign.png"
-                            alt=""
-                            className="faq_queston-icon"
-                            style={{
-                              transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-                              transition: "transform 0.3s ease",
-                            }}
-                          />
-                        </div>
-                      </div>
-
-                      <div
-                        className="faq_answer-wrap"
-                        style={{
-                          maxHeight: isOpen ? "300px" : "0px",
-                          opacity: isOpen ? 1 : 0,
-                          overflow: "hidden",
-                          transition:
-                            "max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease",
-                        }}
-                      >
+                    <div key={item.id} slide-up="" className={`faq_out-wrap${isOpen ? " is-open" : ""}`}>
+                      <h3 className="faq_question-heading">
+                        <button type="button" id={`faq-question-${item.id}`} className="faq_queston-wrap" aria-expanded={isOpen} aria-controls={`faq-answer-${item.id}`} onClick={() => toggleItem(idx)}>
+                          <span className="text-size-medium text-colr-black text-weight-medium">{item.question}</span>
+                          <span className="faq_queston-icon-wrap" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                              <path d="M5 12h14" />
+                              {!isOpen && <path d="M12 5v14" />}
+                            </svg>
+                          </span>
+                        </button>
+                      </h3>
+                      <div id={`faq-answer-${item.id}`} role="region" aria-labelledby={`faq-question-${item.id}`} className="faq_answer-wrap" hidden={!isOpen}>
                         <p className="text-small faq-ans">{item.answer}</p>
                       </div>
                     </div>

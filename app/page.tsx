@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 export default function HomePage() {
   return (
     <div className="page-wrapper">
-      <div className="main-wrapper">
+      <main id="main-content" className="main-wrapper">
         <Hero />
         <LogoPartners />
         <Services />
@@ -20,8 +20,8 @@ export default function HomePage() {
         <Testimonials />
         <FAQ />
         <BrandCTA />
-        <Footer />
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -48,7 +48,7 @@ export default function ScrollChrome() {
         type="button"
         aria-label="Back to top"
         className={`brandicom-top${showTop ? " show" : ""}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
         tabIndex={showTop ? 0 : -1}
       >
         ↑

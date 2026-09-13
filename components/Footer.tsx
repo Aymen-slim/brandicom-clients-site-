@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <>
-      <section className="footer">
+      <footer className="footer">
         <div className="container">
           <div className="footer_main-wrapper">
             <div className="footer_data-wrap">
@@ -165,7 +165,7 @@ export default function Footer() {
                           Case Studies
                         </Link>
                         <Link href="#testimonials" className="footer_text-link">
-                          Blog
+                          Testimonials
                         </Link>
                         <Link href="#contact" className="footer_text-link">
                           Contact
@@ -275,7 +275,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </section>
+      </footer>
     </>
   );
 }

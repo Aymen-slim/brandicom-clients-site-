@@ -78,6 +78,7 @@ export default function RootLayout({
     >
       <body className="body">
         <SmoothScroll>
+          <a href="#main-content" className="skip-link">Skip to content</a>
           <Navbar />
           <ScrollChrome />
           {children}

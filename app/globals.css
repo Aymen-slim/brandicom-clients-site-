@@ -4033,7 +4033,7 @@ figure {
 }
 
 .faq_answer-wrap {
-  height: 0;
+  height: auto;
   overflow: hidden;
 }
 
@@ -5523,7 +5523,19 @@ figure {
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
 }
 
-.services_card:hover .services_card_overlay,
+@media (hover: hover) and (pointer: fine) {
+  .services_card:hover .services_card_overlay {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .services_card:hover .services_card-arrow-wrap {
+    opacity: 0;
+  }
+}
+
 .services_card.is-open .services_card_overlay {
   opacity: 1;
   visibility: visible;
@@ -5531,7 +5543,6 @@ figure {
   pointer-events: auto;
 }
 
-.services_card:hover .services_card-arrow-wrap,
 .services_card.is-open .services_card-arrow-wrap {
   opacity: 0;
 }

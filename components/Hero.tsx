@@ -118,7 +118,7 @@ export default function Hero() {
             <div slide-up="" className="hero_heading-wrap">
               <h1 className="style-h1">
                 Build, Grow, and Scale
-                <br />
+                <br />{" "}
                 Your Brand on Social Media
               </h1>
             </div>

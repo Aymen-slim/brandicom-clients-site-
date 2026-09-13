@@ -59,7 +59,7 @@ export default function Services() {
             <div className="services_title-wrap">
               <div slide-up="" className="services_heading-wrap">
                 <h2 className="style-h2">
-                  Everything you need to grow <br />
+                  Everything you need to grow <br />{" "}
                   on social — done for you
                 </h2>
               </div>
@@ -82,6 +82,7 @@ export default function Services() {
                   role="button"
                   tabIndex={0}
                   aria-expanded={isOpen}
+                  aria-label={s.title}
                   className={`services_card${isOpen ? " is-open" : ""}`}
                   style={{ position: "relative", cursor: "pointer" }}
                   onClick={() => toggleCard(s.id)}
@@ -90,6 +91,7 @@ export default function Services() {
                       e.preventDefault();
                       toggleCard(s.id);
                     }
+                    if (e.key === "Escape") setActiveOverlay(null);
                   }}
                 >
                   <div className="services_card-inner-wrap">

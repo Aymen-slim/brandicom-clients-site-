@@ -173,7 +173,7 @@ export default function Pricing() {
               <div className="amount-wrapper">
                 <div className="pricing_card-btm-text-wrap">
                   <div className="pricing_right-card-btm-text">
-                    $999/<span className="pricing_text-span right">month</span>
+                    $999 <span className="pricing_text-span right">/month</span>
                   </div>
                 </div>
               </div>

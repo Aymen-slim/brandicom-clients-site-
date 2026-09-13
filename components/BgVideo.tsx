@@ -47,7 +47,17 @@ export default function BgVideo({
     const wrap = wrapRef.current;
     const v = videoRef.current;
     if (!wrap || !v) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      v.autoplay = false;
+      if (!poster) {
+        v.preload = "metadata";
+        v.src = mp4;
+        const showFrame = () => { v.currentTime = Math.min(0.1, v.duration / 2); };
+        v.addEventListener("loadedmetadata", showFrame, { once: true });
+        return () => { v.removeEventListener("loadedmetadata", showFrame); v.pause(); };
+      }
+      return;
+    }
 
     let delayTimer: ReturnType<typeof setTimeout> | undefined;
     let visible = eager;
@@ -99,7 +109,7 @@ export default function BgVideo({
       io.disconnect();
       document.removeEventListener("visibilitychange", onVis);
     };
-  }, [mp4, deferMs, eager]);
+  }, [mp4, poster, deferMs, eager]);
 
   return (
     <div ref={wrapRef} className="bgv-root" style={{ width: "100%", height: "100%", ...(fill ? {} : { aspectRatio: "16 / 10" }) }}>
